@@ -1,0 +1,268 @@
+:root {
+    --bg:#fff; --fg:#111; --muted:#666;
+    --card:#fafafa; --primary:#8cb5ff;
+    --danger:#d64545; --radius:16px;
+  }
+  
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+  .container{max-width:1000px;margin:0 auto;padding:16px}
+  header{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    padding-block:16px;
+  }
+  header h1{ margin:0; font-size:50px; letter-spacing:.5px; }
+  nav a{ margin-inline:8px; }  
+  nav a{margin-inline-start:12px;color:var(--fg);text-decoration:none}
+  
+  .card{background:var(--card);padding:16px;border-radius:var(--radius);margin:16px 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  label{display:flex;flex-direction:column;gap:6px;min-width:140px}
+  input,select,textarea,button{padding:10px;border:1px solid #ddd;border-radius:10px;font:inherit}
+  button{cursor:pointer}
+  button.primary{background:var(--primary);color:#fff;border:none}
+  button.secondary{ background:transparent; border:1px solid #cbd5e1; color:var(--fg) }
+  button.secondary:hover{ background:#eef2ff }
+
+  button.danger{background:var(--danger);color:#fff;border:none}
+
+  label.secondary {
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    color: var(--fg);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-weight: normal;
+    transition: background 0.2s;
+  }
+  label.secondary:hover {
+    background: #eef2ff;
+  }
+  
+  
+  .table{width:100%;border-collapse:collapse}
+  .table th,.table td{padding:10px;border-bottom:1px solid #eaeaea;text-align:start}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  
+  .kpi{font-size:28px;font-weight:700;text-align:center}
+  .kpi small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+  .muted{color:var(--muted)}
+  @media(min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+
+  h3{ margin:8px 0; font-size:18px; color:var(--muted) }
+  button.secondary{ background:transparent; border:1px solid #cbd5e1; color:var(--fg) }
+  button.secondary:hover{ background:#eef2ff }
+
+  #settings.card {
+    max-width: 600px;
+    margin: 24px auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
+  }
+  .dark {
+    --bg: #3A0519;      /* רקע כללי - יין עמוק */
+    --card: #670D2F;    /* כרטיסים - ורוד יין בהיר יותר */
+    --fg: #fce7ef;      /* טקסט בהיר ועדין */
+    --muted: #eab5c5;   /* טקסט משני */
+    --primary: #ff82a9; /* צבע עיקרי (כפתורים/הדגשות) */
+    --danger: #ffb3c1;  /* צבע כפתור מחיקה רך */
+  }
+  
+  .dark .card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: background 0.4s, color 0.4s;
+  }
+  .dark .table th,.dark .table td{ border-bottom:1px solid #1f2937 }
+
+  @media (max-width: 600px){
+    .row > label { flex: 1 1 220px; }
+    input, select, textarea { width: 100%; }
+    .container{ padding:12px }
+  }
+  
+  body {
+    background: linear-gradient(to bottom, #ffeef4, #ffd8e6);
+    color: var(--fg);
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  .dark body {
+    background: var(--bg);
+    color: var(--fg);
+  }
+  
+  body, .card, header, nav, section, input, select, textarea, button {
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* #form.card {
+    max-width: 965px;    
+    width: 100%;
+    margin: 24px auto;     
+    box-sizing: border-box;
+  } */
+  
+  html{ scroll-behavior: smooth; }
+
+  #welcome.card .actions { display:flex; gap:8px; margin-top:8px }
+  #welcome.card a.primary { padding:8px 12px; border-radius:10px; background:var(--primary); color:#fff; text-decoration:none }
+  #welcome.card a.secondary { padding:8px 12px; border-radius:10px; border:1px solid #cbd5e1; text-decoration:none; color:var(--fg) }
+
+ /* כרטיס ברוכה הבאה */
+#welcome.card {
+  max-width: 965px;        /* אותו גודל כמו שאר הכרטיסים שלך */
+  width: 100%;
+  margin: 24px auto;
+  box-sizing: border-box;
+  text-align: center;       /* ממורכז */
+}
+
+#welcome.card h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+#welcome.card .muted {
+  color: #b3b3b3;
+  font-size: 0.95em;
+}
+
+#welcome.card .actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+#welcome.card a.primary {
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+#welcome.card a.secondary {
+  border: 1px solid #cbd5e1;
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: var(--fg);
+  text-decoration: none;
+}
+ 
+
+/* עטיפה ל-❔ והבועה */
+.help-wrap {
+  position: relative;           /* חשוב! ההורה ל-position:absolute של הבועה */
+  display: inline-block;
+  margin-inline-start: 6px;     /* רווח קטן אחרי הטקסט */
+}
+
+
+.help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffe6f0;       /* עיגול ורוד בהיר */
+  color: #b30059;            /* טקסט ורוד כהה, רך ונראה */
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid #f5bcd4; /* קו עדין */
+  cursor: pointer;
+  margin-inline-end: 6px;    /* רווח קטן אחרי האייקון */
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.help-icon:hover {
+  background: #ffccde;       /* בהיר יותר במעבר */
+  transform: scale(1.08);    /* נותן תחושה של כפתור אמיתי */
+}
+
+/* מצב כהה */
+.dark .help-icon {
+  background: #7a1743;
+  color: #ffe6f0;
+  border-color: #a63a6a;
+}
+.dark .help-icon:hover {
+  background: #a63a6a;
+}
+
+
+/* הבועה */
+.tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-start: 0;
+  background: #ffe6f0;
+  color: #444;
+  padding: 14px 18px;
+  border-radius: 12px;
+  width: 420px;
+  max-width: 90vw;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  font-size: 0.95em;
+  line-height: 1.5;
+  z-index: 1000;
+  text-align: right;
+  white-space: normal;
+  font-weight: 400;
+
+  /* ✨ אנימציה חלקה */
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+  will-change: opacity, transform;
+}
+
+.tooltip.hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear 0s;
+}
+
+/* עיצוב פנימי של טקסטים */
+.tooltip em { font-style: italic; }
+.tooltip b, .tooltip strong { color: var(--primary); }
+
+/* מצב כהה */
+.dark .tooltip {
+  background: #6f1136;
+  color: #fce7ef;
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
+}
+
+
+
+/* תמיד חשבון רוחב כולל padding/border – מונע "גלישה" */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* קונטיינר ראשי: מתכנס עד 965 ומתרחב יפה במסכים קטנים */
+main.container{
+  max-width: 965px;
+  width: min(100%, 965px);
+  margin: 0 auto;
+  padding: 0 16px;   /* שוליים פנימיים למובייל/חלון צר */
+}
+
+/* כל הכרטיסים – אותו רוחב ואותם מרווחים */
+.card{
+  width: 100%;
+  margin: 24px 0;
+}
+
+/* חריג מכוון: "נתונים" קטן יותר ומרוכז */
+#settings.card{
+  max-width: 700px;
+  margin: 24px auto;
+}

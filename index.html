@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<button id="themeToggle" class="secondary">מצב כהה</button>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MoveMix</title>
+  <!-- עיצוב -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- צבע סרגל עליון בדפדפנים (מתאים לפלטת האתר) -->
+  <meta name="theme-color" content="#670D2F" />
+  <!-- תיאור קצר שיופיע בתוצאות חיפוש -->
+  <meta name="description" content="MoveMix — יומן אימונים חכם לטניס, כוח, פילאטיס ויוגה." />
+  <!-- איקון דיפולטי קטן כדי למנוע שגיאת favicon (אפשר להחליף ללוגו בעתיד) -->
+  <link rel="icon" href="data:;base64,=" />
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <!-- הקוד הראשי שלך -->
+  <script type="module" src="./js/main.js" defer></script>
+</head>
+
+<body>
+  <header class="container">
+    <h1>MoveMix</h1>
+    <nav>
+        <a href="#settings">נתונים</a>
+        <a href="#form">הוספת אימון</a>
+        <a href="#dashboard">סיכומים</a> <!-- יקפוץ לשבועי; החודשי מתחתיו -->
+        <a href="#history">היסטוריה</a>
+        <a href="#stats">סטטיסטיקות</a>
+      </nav>      
+  </header>
+
+  <section id="welcome" class="card">
+    <h2>ברוכה הבאה ל-Movemix 🩷🎉</h2>
+    <p class="muted">
+      כדי להתחיל, הזיני <a href="#settings">נתונים אישיים</a> (משקל ו-MET) או הוסיפי <a href="#form">אימון ראשון</a>.
+      הנתונים נשמרים מקומית בדפדפן שלך.
+    </p>
+    <div class="actions">
+      <a class="primary" href="#settings">לנתונים</a>
+      <a class="secondary" href="#form">להוספת אימון</a>
+    </div>
+  </section>  
+  
+
+  <section id="settings" class="card">
+    <h2>נתונים</h2>
+    <form id="settings-form">
+      <div class="row">
+        <label>משקל (ק״ג)
+          <input type="number" id="set-weight" min="30" max="200" step="0.1" required />
+        </label>
+      </div>
+      <div class="row">
+        <button type="button" id="export-json" class="secondary">ייצוא נתונים (JSON)</button>
+        <label class="secondary" style="display:flex;align-items:center;gap:8px; padding:8px 10px; border-radius:10px; cursor:pointer">
+          ייבוא נתונים (JSON)
+          <input type="file" id="import-json" accept="application/json" style="display:none">
+        </label>
+      </div>      
+      <h3>
+        <span class="help-wrap">
+          <span id="met-help" class="help-icon" aria-haspopup="true" aria-expanded="false" title="מה זה MET?">?</span>
+          <div id="met-tooltip" class="tooltip hidden" role="dialog" aria-label="הסבר על MET">
+            <strong>מה זה MET?</strong><br>
+            MET (ראשי תיבות של <em>Metabolic Equivalent of Task</em>) הוא מדד לעצימות פעילות גופנית — כמה קלוריות שורפים ביחס למנוחה.<br>
+            לדוגמה: טניס ≈ 8, כוח ≈ 5.5, פילאטיס ≈ 3.2, יוגה ≈ 3 וכו׳.<br><br>
+            <b>חישוב הקלוריות נעשה לפי:</b><br>
+            קלוריות ≈ MET × משקל × משך האימון (בדקות) ÷ 60<br><br>
+            <em>ניתן להשאיר את הערכים האלה כמו שהם, או לשנות לפי העצימות שלך.</em>
+          </div>
+        </span>
+        MET לפי סוג אימון
+      </h3>
+                  
+      <div class="row">
+        <label>טניס (match/drills)
+          <input type="number" id="met-tennis" min="1" max="15" step="0.1" />
+        </label>
+        <label>כוח
+          <input type="number" id="met-strength" min="1" max="15" step="0.1" />
+        </label>
+        <label>פילאטיס
+          <input type="number" id="met-pilates" min="1" max="15" step="0.1" />
+        </label>
+        <label>יוגה
+          <input type="number" id="met-yoga" min="1" max="15" step="0.1" />
+        </label>
+        <label>אחר
+          <input type="number" id="met-other" min="1" max="15" step="0.1" />
+        </label>
+      </div>
+  
+      <div class="actions">
+        <button type="submit" class="primary">שמור הגדרות</button>
+        <button type="button" id="settings-reset" class="secondary">אפס לערכי ברירת־מחדל</button>
+      </div>
+    </form>
+    <p class="muted">הקלוריות יחושבו לפי השינויים רק כאשר לא הוזנו ידנית מהשעון.</p>
+  </section>
+  
+  <main class="container">
+    <section id="form" class="card">
+      <h2>הוספת אימון חדש</h2>
+      <form id="session-form">
+        <div class="row">
+          <label>תאריך
+            <input type="date" id="date" required />
+          </label>
+          <label>סוג
+            <select id="type" required>
+              <option value="tennis">טניס</option>
+              <option value="strength">כוח</option>
+              <option value="pilates">פילאטיס</option>
+              <option value="yoga">יוגה</option>
+              <option value="other">אחר</option>
+            </select>
+            <label id="otherLabel" style="display:none">שם האימון (כשנבחר "אחר")
+                <input type="text" id="otherName" placeholder="למשל: הליכה / ריצה" />
+            </label>              
+          </label>
+          <label>משך (דקות)
+            <input type="number" inputmode="numeric" id="duration" min="5" max="300" step="1" required />
+          </label>
+          <label>אינטנסיביות (1–5)
+            <input type="number" id="intensity" min="1" max="5" value="3" required />
+          </label>
+          <label>קלוריות (מהשעון, אופציונלי)
+            <input type="number" id="caloriesManual" min="0" step="1" placeholder="למשל 420" />
+          </label>
+          
+        </div>
+        <label>הערות
+          <textarea id="notes" rows="2" placeholder="איך הרגשת?"></textarea>
+        </label>
+        <div class="actions">
+          <button type="submit" class="primary">שמור אימון</button>
+          <button type="button" id="clear-all" class="danger">נקה הכל</button>
+        </div>
+      </form>
+      <p class="muted">* הקלוריות הן הערכה לפי MET וניתן לכוון אותן בהמשך.</p>
+    </section>
+
+    <section id="dashboard" class="card">
+      <h2>סיכום שבועי</h2>
+      <div class="grid">
+        <div class="kpi"><span id="kpi-workouts">0</span><small>אימונים</small></div>
+        <div class="kpi"><span id="kpi-minutes">0</span><small>דקות</small></div>
+        <div class="kpi"><span id="kpi-calories">0</span><small>קל׳ (≈)</small></div>
+      </div>
+    </section>
+
+    <section id="dashboard-month" class="card">
+        <h2>סיכום חודשי</h2>
+        <div class="muted" id="monthRange"></div>
+        <div class="grid">
+          <div class="kpi"><span id="kpiM-workouts">0</span><small>אימונים</small></div>
+          <div class="kpi"><span id="kpiM-minutes">0</span><small>דקות</small></div>
+          <div class="kpi"><span id="kpiM-calories">0</span><small>קל׳ (≈)</small></div>
+        </div>
+      </section>      
+
+    <section id="history" class="card">
+      <h2>היסטוריה</h2>
+      <div class="row">
+        <input id="search" placeholder="חיפוש לפי הערות/סוג" />
+        <input id="from" type="date" />
+        <input id="to" type="date" />
+        <button id="filter-btn">סינון</button>
+      </div>
+      <table class="table" id="history-table">
+        <thead>
+          <tr>
+            <th>תאריך</th><th>סוג</th><th>דקות</th><th>אינטנס׳</th>
+            <th>קל׳ (≈)</th><th>הערות</th><th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="stats" class="card">
+        <h2>סטטיסטיקות</h2>
+        <div class="row" style="margin-bottom:8px">
+          <label>תקופה לעוגה
+            <select id="piePeriod">
+              <option value="week" selected>שבוע נוכחי</option>
+              <option value="month">חודש נוכחי</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid">
+          <canvas id="pieByType"></canvas>
+        </div>
+      </section>
+      
+  </main>
+
+  <footer class="container muted">© movemix · LocalStorage</footer>
+</body>
+</html>
