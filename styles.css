@@ -547,9 +547,10 @@ img, video {
 /* כותרת תמיד ממורכזת */
 h1 {
   text-align: center !important;
-  margin: 0 auto !important;
   width: max-content;
-  margin-top: 28px; /* 👈 רק הוסיפי את זה שם */
+  margin-top: 32px !important;      /* רווח מלמעלה */
+  margin-left: auto !important;     /* ממורכז שמאלה */
+  margin-right: auto !important;    /* ממורכז ימינה */
 }
 
 /* אם הכותרת יושבת בתוך header שהוא flex/גריד */
