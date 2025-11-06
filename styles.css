@@ -549,6 +549,7 @@ h1 {
   text-align: center !important;
   margin: 0 auto !important;
   width: max-content;
+  margin-top: 24px; /* 👈 רק הוסיפי את זה שם */
 }
 
 /* אם הכותרת יושבת בתוך header שהוא flex/גריד */
@@ -597,8 +598,8 @@ header {
 /* כפתור מצב כהה / בהיר */
 #themeToggle {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 8px;
+  right: 8px;
   padding: 6px 12px;
   font-size: 0.9em;
   border-radius: 8px;
