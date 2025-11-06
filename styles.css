@@ -477,3 +477,70 @@ img, video {
   /* טולטיפ שלא יגרום לגלילה */
   .tooltip { width: min(420px, 90vw); }
 }
+
+/* ===== מובייל: ליישר את הכרטיסיות שבתוך <main> לטור אחד, רוחב מלא ומרכז ===== */
+@media (max-width: 700px) {
+
+  /* המיין עצמו – טור אחד, מרוכז, ללא שוליים שמאלה/ימינה */
+  main {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 12px !important; /* קצת נשימה בצדדים */
+    justify-items: stretch !important; /* כל הילדים ימלאו את הרוחב */
+    align-items: stretch !important;
+  }
+
+  /* כל סקשן במיין תופס שורה מלאה */
+  main > * {
+    grid-column: 1 / -1 !important;
+    margin: 0 !important;
+  }
+
+  /* הכרטיסיות הספציפיות – לבטל רוחבים/מקס-רוחבים/מינימום קודמים ולהדביק למרכז */
+  #form.card,
+  #weekly.card,
+  #monthly.card,
+  #history.card,
+  #stats.card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    justify-self: stretch !important;
+    align-self: stretch !important;
+    float: none !important;
+    position: static !important;
+  }
+
+  /* טפסים/כפתורים בפנים – לא לשבור רוחב */
+  #form.card .row,
+  #form.card input,
+  #form.card select,
+  #form.card textarea,
+  #form.card button {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* גרפים/קנבס בתוך הסיכומים/סטטיסטיקות – לא יחרגו */
+  #weekly canvas,
+  #monthly canvas,
+  #stats canvas,
+  .chart-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* טבלה – גלילה אופקית רכה כשצריך, בלי להזיז את הדף שמאלה */
+  #history-table {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+}
+
