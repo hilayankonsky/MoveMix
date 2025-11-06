@@ -572,6 +572,10 @@ header {
     justify-content: center;
     gap: 4px;                  /* רווח נעים בין הקישורים */
     margin-top: 0px !important; 
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 8px 10px;
+    flex-wrap: wrap;
   }
 
   nav a {
