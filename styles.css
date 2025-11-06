@@ -412,3 +412,68 @@ img, video {
   max-width: 100%;
   height: auto;
 }
+
+/* ===== Mobile: one column, full-width cards, no horizontal scroll ===== */
+@media (max-width: 700px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* כל ה"קונטיינרים" – טור אחד */
+  body, main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* הכרטיסיות שמחוץ ל-main וגם שבתוכו – אותו סטייל */
+  #welcome.card,
+  #settings.card,
+  main .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    /* ודאו שאין float/position שמזיז שמאלה */
+    float: none !important;
+    position: static !important;
+  }
+
+  /* אם יש לך wrapper כלשהו שמזיז – נאפס שוליים פנימיים */
+  .sections, .cards, .grid, .content, .container {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* טפסים/כפתורים – רוחב מלא */
+  .row,
+  .row label,
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea,
+  button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* טבלה – לא שוברת מסך */
+  #history-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  /* קנבסים/גרפים */
+  canvas, .chart-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* טולטיפ שלא יגרום לגלילה */
+  .tooltip { width: min(420px, 90vw); }
+}
