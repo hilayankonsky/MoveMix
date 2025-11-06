@@ -593,3 +593,32 @@ header {
     background-color: rgba(255,255,255,0.12);
   }
 }
+
+/* כפתור מצב כהה / בהיר */
+#themeToggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 12px;
+  font-size: 0.9em;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(0,0,0,0.2);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: auto;              /* 👈 שלא יתפרס לרוחב */
+}
+
+/* כשהעכבר מעל */
+#themeToggle:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.03);
+}
+
+/* במצב כהה */
+.dark #themeToggle {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.3);
+}
+
