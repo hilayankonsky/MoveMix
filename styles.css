@@ -330,3 +330,85 @@ h1 {
   h1 { font-size: clamp(22px, 7vw, 32px); }
 }
 
+/* ===== Fix mobile overflow + single-column layout ===== */
+
+/* 1) בטל גלילה לרוחב והבטח חישובי רוחב הגיוניים */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2) כרטיסים ותוכן – רוחב מלא בצורה בטוחה */
+.card {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+/* אם נשאר איפשהו max-width קשיח (כמו 965px) – נדרוס במובייל */
+@media (max-width: 900px) {
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+  }
+}
+
+/* 3) מובייל: עמודה אחת מסודרת לכל הסקשנים, בלי "זחילה" שמאלה */
+@media (max-width: 700px) {
+  body { padding: 0 12px; }
+
+  /* אם יש לך קונטיינרים של גריד/כרטיסים – הופכים לעמודה אחת */
+  main, .grid, .cards, .sections {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  /* ודואגות שכל הסקשנים המרכזיים יתפסו שורה מלאה */
+  #welcome, #settings, #form, #weekly, #monthly, #history, #stats {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* קלטים וכפתורים לא ישברו את המסך */
+  .row,
+  .row label,
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea,
+  button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* קנבס/גרפים בקנה מידה למסך */
+  canvas, .chart-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* טבלה – גלילה אופקית רכה במקום לפוצץ את העמוד */
+  #history-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+}
+
+/* 4) טולטיפ – רוחב בטוח גם במסכים קטנים (למנוע גלילת רוחב) */
+.tooltip {
+  width: min(420px, 90vw);
+}
+
+/* 5) ליתר ביטחון: תמונות/וידאו לעולם לא יחרגו */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
