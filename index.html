@@ -161,24 +161,36 @@
         </div>
       </section>      
 
-    <section id="history" class="card">
-      <h2>היסטוריה</h2>
-      <div class="row">
-        <input id="search" placeholder="חיפוש לפי הערות/סוג" />
-        <input id="from" type="date" />
-        <input id="to" type="date" />
-        <button id="filter-btn">סינון</button>
-      </div>
-      <table class="table" id="history-table">
-        <thead>
-          <tr>
-            <th>תאריך</th><th>סוג</th><th>דקות</th><th>אינטנס׳</th>
-            <th>קל׳ (≈)</th><th>הערות</th><th></th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
+<section id="history" class="card">
+  <h2>היסטוריית אימונים</h2>
+  <div class="row" id="history-filters">
+    <input id="search" type="search" placeholder="חיפוש לפי הערות/סוג" />
+    <label>
+      מתאריך:
+      <input id="from" type="date" />
+    </label>
+    <label>
+      עד תאריך:
+      <input id="to" type="date" />
+    </label>
+    <button id="filter-btn" class="secondary">סינון</button>
+  </div>
+  <table class="table" id="history-table">
+    <thead>
+      <tr>
+        <th>תאריך</th>
+        <th>סוג</th>
+        <th>דקות</th>
+        <th>אינטנס׳</th>
+        <th>קל׳ (≈)</th>
+        <th>הערות</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</section>
+
 
     <section id="stats" class="card">
         <h2>סטטיסטיקות</h2>
