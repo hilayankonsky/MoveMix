@@ -549,7 +549,7 @@ h1 {
   text-align: center !important;
   margin: 0 auto !important;
   width: max-content;
-  margin-top: 24px; /* 👈 רק הוסיפי את זה שם */
+  margin-top: 28px; /* 👈 רק הוסיפי את זה שם */
 }
 
 /* אם הכותרת יושבת בתוך header שהוא flex/גריד */
