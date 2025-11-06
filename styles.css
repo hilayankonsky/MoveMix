@@ -637,3 +637,12 @@ header {
     margin-top: 16px !important; /* אפשר לעלות ל-24/32 אם רוצים יותר רווח */
   }
 }
+
+#history-filters label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+  color: var(--fg-muted);
+  gap: 2px;
+}
+
