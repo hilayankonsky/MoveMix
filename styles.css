@@ -562,3 +562,31 @@ header {
   justify-content: center !important;
   align-items: center !important;
 }
+
+/* ===== עיצוב ניווט רספונסיבי מתחת לכותרת ===== */
+@media (max-width: 700px) {
+  nav {
+    display: flex;
+    flex-direction: column;     /* אחת מתחת לשנייה */
+    align-items: center;        /* באמצע המסך */
+    justify-content: center;
+    gap: 10px;                  /* רווח נעים בין הקישורים */
+    margin-top: 10px;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    max-width: 250px;           /* שלא יתפרסו לרוחב גדול מדי */
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 12px;
+    background-color: rgba(255,255,255,0.08); /* רקע עדין */
+    text-decoration: none;
+  }
+
+  /* במצב כהה – שהכפתורים עדיין יהיו נעימים */
+  .dark nav a {
+    background-color: rgba(255,255,255,0.12);
+  }
+}
