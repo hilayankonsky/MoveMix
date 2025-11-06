@@ -572,25 +572,24 @@ header {
     justify-content: center;
     gap: 4px;                  /* רווח נעים בין הקישורים */
     margin-top: 0px !important; 
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 8px 10px;
-    flex-wrap: wrap;
   }
 
   nav a {
-    display: block;
-    width: 100%;
-    max-width: 250px;           /* שלא יתפרסו לרוחב גדול מדי */
-    text-align: center;
-    padding: 8px 0;
-    border-radius: 12px;
-    background-color: rgba(255,255,255,0.08); /* רקע עדין */
-    text-decoration: none;
-  }
+  display: block;
+  width: 100%;
+  max-width: 250px;           /* שלא יתפרסו לרוחב גדול מדי */
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 12px;
+  background-color: rgba(255,255,255,0.08); /* רקע עדין */
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);    /* 👈 מסגרת עדינה במצב בהיר */
+  color: var(--fg);
+}
 
   /* במצב כהה – שהכפתורים עדיין יהיו נעימים */
   .dark nav a {
+    border-color: rgba(255, 255, 255, 0.25);  /* 👈 מסגרת בהירה במצב כהה */
     background-color: rgba(255,255,255,0.12);
   }
 }
