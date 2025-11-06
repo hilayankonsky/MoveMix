@@ -570,7 +570,7 @@ header {
     flex-direction: column;     /* אחת מתחת לשנייה */
     align-items: center;        /* באמצע המסך */
     justify-content: center;
-    gap: 10px;                  /* רווח נעים בין הקישורים */
+    gap: 6px;                  /* רווח נעים בין הקישורים */
     margin-top: 10px;
   }
 
@@ -579,7 +579,7 @@ header {
     width: 100%;
     max-width: 250px;           /* שלא יתפרסו לרוחב גדול מדי */
     text-align: center;
-    padding: 10px 0;
+    padding: 8px 0;
     border-radius: 12px;
     background-color: rgba(255,255,255,0.08); /* רקע עדין */
     text-decoration: none;
