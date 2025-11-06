@@ -544,3 +544,21 @@ img, video {
   }
 }
 
+/* כותרת תמיד ממורכזת */
+h1 {
+  text-align: center !important;
+  margin: 0 auto !important;
+  width: max-content;
+}
+
+/* אם הכותרת יושבת בתוך header שהוא flex/גריד */
+header h1 {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+/* ואם header עצמו מסדר פריסה, נכפה מרכוז כללי */
+header {
+  justify-content: center !important;
+  align-items: center !important;
+}
