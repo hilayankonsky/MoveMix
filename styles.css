@@ -571,7 +571,7 @@ header {
     align-items: center;        /* באמצע המסך */
     justify-content: center;
     gap: 4px;                  /* רווח נעים בין הקישורים */
-    margin-top: 2px !important; 
+    margin-top: 0px !important; 
   }
 
   nav a {
