@@ -570,7 +570,7 @@ header {
     flex-direction: column;     /* אחת מתחת לשנייה */
     align-items: center;        /* באמצע המסך */
     justify-content: center;
-    gap: 6px;                  /* רווח נעים בין הקישורים */
+    gap: 4px;                  /* רווח נעים בין הקישורים */
     margin-top: 10px;
   }
 
